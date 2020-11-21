@@ -15,8 +15,15 @@ The function should:
   Example createMenuItem('tacos', 8, 'Lunch') should return {name: 'tacos', price: 8, category: 'Lunch'}
 */
 
-function createMenuItem(/*Your code here*/){
-    /*Your code here*/
+
+function createMenuItem(food,price,category){
+  let menu = {
+  name: food,
+  price: price,
+  category: category,
+}
+return (menu)
+
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -29,11 +36,16 @@ Test your createMenuItems function by doing the following:
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
 
+createMenuItem("spinnache", 1, "now")
+createMenuItem("Cheese",2,"now")
+createMenuItem("froglegs",3,"now")
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
-You're having a lunch special! 25% off for teachers and students, 10% off for everyone else. Add a method to the 
-burger object below that automatically calculates price depending on the a string received as a parameter. 
+You're having a lunch special! 25% off for teachers
+ and students, 10% off for everyone else. Add a method to the 
+burger object below that automatically calculates 
+price depending on the a string received as a parameter. 
 
 Using the burger object below do the following:
   1. Add a method called discount to the burger object 
@@ -44,14 +56,19 @@ Using the burger object below do the following:
   For example: burger.discount("teacher") would return 13.5 and burger.discount("public") would return 16.2
 */
 
-export const burger = {
+ export const burger = {
   name: "Burger", 
   price: 18, 
   category: "Lunch", 
-  /*Your code here*/
+  discount: function (payer){
+       if ((payer === "teacher" || payer === "student")) {
+           return this.price * (1-0.25) 
+       } else {
+           return this.price * (1-0.10)
+       } 
+       
+ }
 }
-
-
 
 ///////////////Reviews (MVP)///////////////////
 const reviews = [
@@ -70,15 +87,15 @@ Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
 
-
-
+console.log(reviews[5].feedback)
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 4: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Using the reviews array above do the following: (no function needed) 
   1. Following the same format (name, rating, feedback), add a new fictitious review object to the reviews array
   2. log the whole array to the console, make sure the new review is inside of it   
 */
-
+reviews.push({name: "dude", rating: 9, feedback: "awesome"})
+console.log(Object.entries(reviews))
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -88,7 +105,8 @@ Reyna's feedback is missing! Use what you know to do the following: (no function
 */
 
 
-
+reviews[7].feedback = "this place is chill with really cool people, great for getting work done on weekdays"
+console.log(Object.entries(reviews))
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 6: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -102,9 +120,13 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
-}
+
+function getReviewByIndex(array,ind) {
+  return array[ind].name +" gave the restaurant a "+ array[ind].rating +
+  " star review, and their feedback was: " + array[ind].feedback
+ }
+ getReviewByIndex(reviews,1)
+ 
 
 
   
@@ -120,10 +142,12 @@ Use the getLastReview function below to do the following:
   For example: getLastReview(reviews) would return: "Reyna gave the restaurant a 3.5 star review, and their feedback was: this place is chill with really cool people, great for getting work done on weekdays".
 */
 
-
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
-} 
+function getLastReview(array) {
+  let ind = array.length-1
+  return array[ind].name +" gave the restaurant a "+ 
+  array[ind].rating +" star review, and their feedback was: " + array[ind].feedback
+ }
+ getLastReview(reviews)
 
 
 
